@@ -48,21 +48,36 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
     viewHolder.symbol.setText(cursor.getString(cursor.getColumnIndex("symbol")));
     viewHolder.bidPrice.setText(cursor.getString(cursor.getColumnIndex("bid_price")));
     int sdk = Build.VERSION.SDK_INT;
-    if (cursor.getInt(cursor.getColumnIndex("is_up")) == 1){
+    int teste = cursor.getInt(cursor.getColumnIndex("is_up"));
+    if (cursor.getInt(cursor.getColumnIndex("is_up")) == 2){
       if (sdk < Build.VERSION_CODES.JELLY_BEAN){
         viewHolder.change.setBackgroundDrawable(
             mContext.getResources().getDrawable(R.drawable.percent_change_pill_green));
       }else {
-        viewHolder.change.setBackground(
-            mContext.getResources().getDrawable(R.drawable.percent_change_pill_green));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+          viewHolder.change.setBackground(
+              mContext.getResources().getDrawable(R.drawable.percent_change_pill_green));
+        }
+      }
+    }else if(cursor.getInt(cursor.getColumnIndex("is_up")) == 1){
+      if (sdk < Build.VERSION_CODES.JELLY_BEAN){
+        viewHolder.change.setBackgroundDrawable(
+                mContext.getResources().getDrawable(R.drawable.percent_change_pill_blue));
+      }else {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+          viewHolder.change.setBackground(
+                  mContext.getResources().getDrawable(R.drawable.percent_change_pill_blue));
+        }
       }
     } else{
       if (sdk < Build.VERSION_CODES.JELLY_BEAN) {
         viewHolder.change.setBackgroundDrawable(
             mContext.getResources().getDrawable(R.drawable.percent_change_pill_red));
       } else{
-        viewHolder.change.setBackground(
-            mContext.getResources().getDrawable(R.drawable.percent_change_pill_red));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+          viewHolder.change.setBackground(
+              mContext.getResources().getDrawable(R.drawable.percent_change_pill_red));
+        }
       }
     }
     if (Utils.showPercent){

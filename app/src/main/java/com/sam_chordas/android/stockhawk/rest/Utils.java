@@ -30,6 +30,9 @@ public class Utils {
         if (count == 1){
           jsonObject = jsonObject.getJSONObject("results")
               .getJSONObject("quote");
+          if (jsonObject.getString("Ask") == "null") {
+            return null;
+          }
           batchOperations.add(buildBatchOperation(jsonObject));
         } else{
           resultsArray = jsonObject.getJSONObject("results").getJSONArray("quote");
@@ -49,11 +52,18 @@ public class Utils {
   }
 
   public static String truncateBidPrice(String bidPrice){
+    if(bidPrice.equals("null"))
+      bidPrice = "+0.00";
     bidPrice = String.format("%.2f", Float.parseFloat(bidPrice));
     return bidPrice;
   }
 
   public static String truncateChange(String change, boolean isPercentChange){
+    if(change.equals("null") && isPercentChange){
+      change = "+0.00%";
+    }else if(change.equals("null")){
+      change = "+0.00";
+    }
     String weight = change.substring(0,1);
     String ampersand = "";
     if (isPercentChange){
@@ -75,16 +85,19 @@ public class Utils {
         QuoteProvider.Quotes.CONTENT_URI);
     try {
       String change = jsonObject.getString("Change");
+      String changeInPercent = jsonObject.getString("ChangeinPercent");
       builder.withValue(QuoteColumns.SYMBOL, jsonObject.getString("symbol"));
       builder.withValue(QuoteColumns.BIDPRICE, truncateBidPrice(jsonObject.getString("Bid")));
-      builder.withValue(QuoteColumns.PERCENT_CHANGE, truncateChange(
-          jsonObject.getString("ChangeinPercent"), true));
+      builder.withValue(QuoteColumns.PERCENT_CHANGE, truncateChange(changeInPercent, true));
       builder.withValue(QuoteColumns.CHANGE, truncateChange(change, false));
       builder.withValue(QuoteColumns.ISCURRENT, 1);
       if (change.charAt(0) == '-'){
         builder.withValue(QuoteColumns.ISUP, 0);
-      }else{
+      }else if(change.equals("+0.00")){
         builder.withValue(QuoteColumns.ISUP, 1);
+      }
+      else{
+        builder.withValue(QuoteColumns.ISUP, 2);
       }
 
     } catch (JSONException e){
