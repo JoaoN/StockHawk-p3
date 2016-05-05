@@ -12,9 +12,10 @@
     android:orientation="vertical">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2">
+        android:layout_weight="3">
 
         <com.db.chart.view.LineChartView
             xmlns:chart="http://schemas.android.com/apk/res-auto"
@@ -45,9 +46,50 @@
         android:layout_height="match_parent"
         android:paddingBottom="@dimen/abc_list_item_padding_horizontal_material"
         android:paddingTop="@dimen/abc_list_item_padding_horizontal_material"
-        android:columnCount="2"
-        android:layout_weight="3">
+        android:columnCount="3"
+        android:layout_weight="7">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/higher_label"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:id="@+id/textView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:text="New Text"
+            android:id="@+id/textView2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:text="New Text"
+            android:id="@+id/textView3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Lower_label"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:id="@+id/textView4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:text="New Text"
+            android:id="@+id/textView5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:text="New Text"
+            android:id="@+id/textView6" />
     </GridLayout>
 
 </LinearLayout>

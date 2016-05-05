@@ -1,6 +1,6 @@
 package com.sam_chordas.android.stockhawk;
 
-import com.sam_chordas.android.stockhawk.model.Results;
+import com.sam_chordas.android.stockhawk.model.Stocks;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,7 +13,7 @@ public interface HistoricalStockAPI {
 
     // To get all the movies and store them as MovieModel objects
     @GET("v1/public/yql")
-            Call<Results> getStocks(
+            Call<Stocks> getStocks(
             @Query("q") String q, @Query("diagnostics") String diagnostics,
             @Query("env") String env, @Query("format") String format
     );

@@ -17,13 +17,58 @@ import java.util.Locale;
         SimpleDateFormat queryDayFormat = new SimpleDateFormat(DATE_FORMAT,localeUS);
         return queryDayFormat.format(dateInMillis);
     }
-
     public static String oneWeekDate(Date date)
     {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.DATE, -7);
         return getFormattedDate(calendar.getTimeInMillis());
+    }
+    public static String oneMonthDate(Date date)
+    {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.MONTH, -1);
+        return getFormattedDate(calendar.getTimeInMillis());
+    }
+    public static String threeMonthDate(Date date)
+    {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.MONTH, -3);
+        return getFormattedDate(calendar.getTimeInMillis());
+    }
+    public static String sixMonthDate(Date date)
+    {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.MONTH, -6);
+        return getFormattedDate(calendar.getTimeInMillis());
+    }
+
+    public static int[] gcd2(int p, int q) {
+        int auxP = p;
+        int auxQ = q;
+        int auxI = 1;
+        while (q != 0) {
+            int temp = q;
+            q = p % q;
+            p = temp;
+        }
+        while(p == 1){
+            auxP += auxI;
+            p = auxP;
+            q = auxQ;
+            while (q != 0){
+                int temp = q;
+                q = p % q;
+                p = temp;
+            }
+        }
+        int stepMax[] = new int[2];
+        stepMax[0] = p;
+        stepMax[1] = auxP;
+        return stepMax;
     }
 }
 

@@ -11,4 +11,15 @@
   <string name="input_hint">FB</string>
   <string name="input_prefill"></string>
   <string name="network_toast">Uh-oh! This app requires an internet connection</string>
+
+  <!--Labels-->
+  <string name="higher_label">Higher: </string>
+  <string name="Lower_label">Lower: </string>
+
+  <!--Menu-->
+  <string name="spinnerTittle">Stock History</string>
+  <string name="oneWeek">Week</string>
+  <string name="oneMonth">Month</string>
+  <string name="threeMonth">Three Month</string>
+  <string name="sixMonth">Six Month</string>
 </resources>

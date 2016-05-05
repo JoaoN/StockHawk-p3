@@ -27,6 +27,9 @@ public class Quote implements Parcelable{
     @SerializedName("Volume")
     private String mVolume;
 
+    @SerializedName("Low")
+    private String mLow;
+
     public String getmSymbol() {
         return mSymbol;
     }
@@ -51,6 +54,10 @@ public class Quote implements Parcelable{
         return mVolume;
     }
 
+    public String getmLow() {
+        return mLow;
+    }
+
     protected Quote(Parcel in){
         mSymbol = in.readString();
         mDate = in.readString();
@@ -58,6 +65,7 @@ public class Quote implements Parcelable{
         mHigh = in.readString();
         mClose = in.readString();
         mVolume = in.readString();
+        mLow = in.readString();
     }
 
     @Override
@@ -73,6 +81,7 @@ public class Quote implements Parcelable{
         dest.writeString(mHigh);
         dest.writeString(mClose);
         dest.writeString(mVolume);
+        dest.writeString(mLow);
     }
 
     public static final Creator<Quote> CREATOR = new Creator<Quote>() {
