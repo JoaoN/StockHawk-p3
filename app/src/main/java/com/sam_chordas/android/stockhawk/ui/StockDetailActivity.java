@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.db.chart.Tools;
 import com.db.chart.model.LineSet;
@@ -51,6 +51,12 @@ public class StockDetailActivity extends AppCompatActivity {
     //Stock variables
     public static List<Quote> mStocks ;
     private FrameLayout mGraphLayout;
+    private TextView mHigherTittle;
+    private TextView mLowerTittle;
+    private TextView mHigher;
+    private TextView mLower;
+    private TextView mDateHigher;
+    private TextView mDateLower;
 
     //Date variables
     public String currentDate;
@@ -66,6 +72,10 @@ public class StockDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_line_graph);
         sb = getIntent().getExtras().getString(SELECTED_SYMBOL);
         mGraphLayout = (FrameLayout) findViewById(R.id.frameLayout);
+        mHigher = (TextView) findViewById(R.id.higherStock);
+        mDateHigher = (TextView) findViewById(R.id.higherDate);
+        mLower = (TextView) findViewById(R.id.lowerStock);
+        mDateLower = (TextView) findViewById(R.id.lowerDate);
         getSupportActionBar().setTitle(sb);
 
         currentDate = Utility.getFormattedDate(System.currentTimeMillis());
@@ -123,16 +133,6 @@ public class StockDetailActivity extends AppCompatActivity {
                         mStocks.clear();
                         getStocks(sb, Utility.oneMonthDate(date));
                         break;
-                    case "Three Months":
-                        lineChartView.dismiss();
-                        mStocks.clear();
-                        getStocks(sb, Utility.threeMonthDate(date));
-                        break;
-                    case "Six Months":
-                        lineChartView.dismiss();
-                        mStocks.clear();
-                        getStocks(sb, Utility.sixMonthDate(date));
-                        break;
                 }
             }
 
@@ -173,31 +173,43 @@ public class StockDetailActivity extends AppCompatActivity {
         float highValues[] = new float[count];
         float lowValues[] = new float[count];
         String labels[] = new String[count];
+        String dateHigher = "Higher Date";
+        String dateLower = "Lower Date";
         float min = 99999;
         float max = 0;
         for(int i = 0; i < count; i++){
             highValues[i] = Float.parseFloat(mStocks.get(i).getmHigh());
             lowValues[i] = Float.parseFloat(mStocks.get(i).getmLow());
             labels[i] = String.valueOf(i);
-            if (lowValues[i] < min)
+            if (lowValues[i] < min){
                 min = lowValues[i];
-            if (highValues[i] > max)
+                dateLower = mStocks.get(i).getmDate();
+            }
+            if (highValues[i] > max){
                 max = highValues[i];
+                dateHigher = mStocks.get(i).getmDate();
+            }
         }
+        mHigher.setText(Float.toString(max));
+        mLower.setText(Float.toString(min));
+        mDateHigher.setText(dateHigher);
+        mDateLower.setText(dateLower);
+
         int maxValue = (int)Math.ceil(max) + 1;
         int minValue = (int)Math.floor(min) - 1;
-        int step[] = gcd2(maxValue, minValue);
+        int step[] = gcd2(maxValue, minValue, count);
         maxValue = step[1];
-        LineSet dataset = new LineSet(labels, highValues);
+        minValue = step[2];
+        LineSet dataSetHigh = new LineSet(labels, highValues);
         mGraphLayout.removeAllViews();
         lineChartView.setAxisBorderValues(minValue, maxValue, step[0]);
 
-        createGraph(dataset);
+        createGraphHigh(dataSetHigh);
     }
 
 
 
-    private void createGraph( LineSet dataset){
+    private void createGraphHigh(LineSet dataset){
 
         lineChartView.addData(dataset);
         dataset.setDotsColor(getResources().getColor(R.color.white));
@@ -213,7 +225,7 @@ public class StockDetailActivity extends AppCompatActivity {
         lineChartView.setBorderSpacing(1)
                 .setXLabels(AxisController.LabelPosition.OUTSIDE)
                 .setYLabels(AxisController.LabelPosition.OUTSIDE)
-                .setXAxis(true)
+                .setXAxis(false)
                 .setYAxis(false)
                 .setBorderSpacing(Tools.fromDpToPx(5))
                 .setAxisColor(ContextCompat.getColor(getBaseContext(), R.color.white))

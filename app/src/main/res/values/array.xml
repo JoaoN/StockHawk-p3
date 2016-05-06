@@ -3,7 +3,5 @@
     <string-array name="stockHistorical">
         <item>One Week</item>
         <item>One Month</item>
-        <item>Three Months</item>
-        <item>Six Months</item>
     </string-array>
 </resources>

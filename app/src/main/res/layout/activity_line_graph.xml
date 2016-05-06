@@ -46,50 +46,39 @@
         android:layout_height="match_parent"
         android:paddingBottom="@dimen/abc_list_item_padding_horizontal_material"
         android:paddingTop="@dimen/abc_list_item_padding_horizontal_material"
-        android:columnCount="3"
+        android:columnCount="2"
+        android:rowCount="2"
         android:layout_weight="7">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/higher_label"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:id="@+id/textView" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:text="New Text"
-            android:id="@+id/textView2" />
+            android:id="@+id/higherStock"
+            android:layout_gravity="center|top" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:text="New Text"
-            android:id="@+id/textView3" />
+            android:id="@+id/higherDate"
+            android:layout_gravity="right|top" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Lower_label"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:id="@+id/textView4" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:text="New Text"
-            android:id="@+id/textView5" />
+            android:id="@+id/lowerStock"
+            android:layout_gravity="center|bottom" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:text="New Text"
-            android:id="@+id/textView6" />
+            android:id="@+id/lowerDate"
+            android:layout_gravity="right|bottom" />
     </GridLayout>
 
 </LinearLayout>
