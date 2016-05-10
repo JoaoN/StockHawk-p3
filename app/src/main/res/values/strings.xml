@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/tools">
   <string name="app_name">Stock Hawk</string>
   <string name="detail_activity">Stock StockDetailActivity</string>
 
@@ -11,6 +11,7 @@
   <string name="input_hint">FB</string>
   <string name="input_prefill"></string>
   <string name="network_toast">Uh-oh! This app requires an internet connection</string>
+  <string name="string_symbol"  translatable="false">symbol</string>
 
   <!--Labels-->
   <string name="higher_label">Higher: </string>
@@ -22,4 +23,15 @@
   <string name="oneMonth">Month</string>
   <string name="threeMonth">Three Month</string>
   <string name="sixMonth">Six Month</string>
+
+  <!--Widget-->
+  <string name="tittle_widget">Stocks Widget</string>
+  <string name="string_set_background_resource" translatable="false">setBackgroundResource</string>
+
+  <!--Content Description-->
+  <string name="higher_stock">Higher Stock<xliff:g id="high">%1$s</xliff:g></string>
+  <string name="lower_stock">Lower Stock<xliff:g id="low">%1$s</xliff:g></string>
+  <string name="higher_stock_date">Higher Stock Date</string>
+  <string name="lower_stock_date">Lower Stock Date</string>
+
 </resources>
