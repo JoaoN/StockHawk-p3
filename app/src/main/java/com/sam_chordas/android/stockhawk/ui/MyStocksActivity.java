@@ -83,7 +83,8 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                 //TODO:
                 Intent intent = new Intent(mContext, StockDetailActivity.class);
                 intent.putExtra(StockDetailActivity.SELECTED_SYMBOL,
-                        ((TextView)(v.findViewById(R.id.stock_symbol))).getText());
+                        ((TextView)(v.findViewById(R.id.stock_symbol))).getText().toString());
+
                 mContext.startActivity(intent);
               }
             }));

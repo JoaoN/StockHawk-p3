@@ -193,9 +193,11 @@ public class StockDetailActivity extends AppCompatActivity {
         mHigher.setText(Float.toString(max));
         mHigher.setContentDescription(getString(R.string.higher_stock, Float.toString(max)));
         mLower.setText(Float.toString(min));
-        mLower.setContentDescription(getString(R.string.higher_stock, Float.toString(min)));
+        mLower.setContentDescription(getString(R.string.lower_stock, Float.toString(min)));
         mDateHigher.setText(dateHigher);
+        mHigher.setContentDescription(getString(R.string.higher_stock_date, dateHigher));
         mDateLower.setText(dateLower);
+        mHigher.setContentDescription(getString(R.string.lower_stock_date, dateLower));
 
         int maxValue = (int)Math.ceil(max);
         int minValue = (int)Math.floor(min);
