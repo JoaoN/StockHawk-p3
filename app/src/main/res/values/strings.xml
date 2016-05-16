@@ -12,6 +12,8 @@
   <string name="input_prefill"></string>
   <string name="network_toast">Uh-oh! This app requires an internet connection</string>
   <string name="string_symbol"  translatable="false">symbol</string>
+  <string name="const_string_symbol"  translatable="false">SELECTED_SYMBOL</string>
+  <string name="toast_same_stock">This stock is already saved!</string>
 
   <!--Labels-->
   <string name="higher_label">Higher: </string>

@@ -62,7 +62,7 @@ public class StockDetailActivity extends AppCompatActivity {
     public String currentDate;
     public String finalDate;
 
-    public static final String SELECTED_SYMBOL = "SELECTED_SYMBOL";
+    public static final String SELECTED_SYMBOL = String.valueOf(R.string.const_string_symbol);
     private LineChartView lineChartView;
     String sb;
 
