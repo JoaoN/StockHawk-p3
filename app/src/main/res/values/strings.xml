@@ -35,5 +35,6 @@
   <string name="lower_stock">Lower Stock<xliff:g id="low">%1$s</xliff:g></string>
   <string name="higher_stock_date">Higher Stock Date<xliff:g id="low">%1$s</xliff:g></string>
   <string name="lower_stock_date">Lower Stock Date<xliff:g id="low">%1$s</xliff:g></string>
+  <string name="fab_button">Add new stock<xliff:g id="fab">%1$s</xliff:g></string>
 
 </resources>

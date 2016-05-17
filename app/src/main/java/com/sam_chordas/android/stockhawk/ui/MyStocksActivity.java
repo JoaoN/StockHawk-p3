@@ -51,7 +51,6 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
   private static final int CURSOR_LOADER_ID = 0;
   private QuoteCursorAdapter mCursorAdapter;
   private Context mContext;
-  private Cursor mCursor;
   boolean isConnected;
 
   @Override
@@ -93,6 +92,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
 
     FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
     fab.attachToRecyclerView(recyclerView);
+    fab.setContentDescription(getString(R.string.fab_button));
     fab.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
         checkConnection();
@@ -226,7 +226,6 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
   @Override
   public void onLoadFinished(Loader<Cursor> loader, Cursor data){
     mCursorAdapter.swapCursor(data);
-    mCursor = data;
   }
 
   @Override
